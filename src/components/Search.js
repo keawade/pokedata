@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Dropdown } from 'stardust';
-import * as PokemonList from '../data/pokemon'
+import { pokemon } from '../data/pokemon'
 
 class Search extends Component {
   render() {
+    console.debug(pokemon)
     return (
       <div className="App-search">
         <Dropdown
@@ -12,12 +13,9 @@ class Search extends Component {
           selection
           multiple={false}
           search={true}
-          options={PokemonList}
-          value={[]}
-          placeholder='Gender'
-          disabled={false}
-          loading={false}
-        />
+          options={pokemon}
+          placeholder='Search for a Pokémon!'
+          />
       </div>
     );
   }
