@@ -4,6 +4,10 @@ import { Dropdown } from 'stardust';
 import { pokemon } from '../data/pokemon'
 
 class Search extends Component {
+  // constructor(props) {
+  //   super(props)
+  // }
+
   render() {
     console.debug(pokemon)
     return (
@@ -15,6 +19,7 @@ class Search extends Component {
           search={true}
           options={pokemon}
           placeholder='Search for a Pokémon!'
+          onChange={this.props.selectFunction}
           />
       </div>
     );
