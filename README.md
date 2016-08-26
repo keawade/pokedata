@@ -12,5 +12,5 @@ Special thanks to [Nintendo](http://www.pokemon.com/) for the great games and ar
 
 ## Contributors
 
-* @keawade
-* @jgimbel
+* [keawade](https://github.com/keawade)
+* [jgimbel](https://github.com/jgimbel)
