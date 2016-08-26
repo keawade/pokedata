@@ -37,10 +37,11 @@ class App extends Component {
         list: [selected, ...this.state.list]
       })
     }
+    window.scrollTo(0, 0)
   }
 
   componentDidMount() {
-    this.selectPokemon(null, Math.floor(Math.random() * pokemon.length))
+    this.selectPokemon(null, Math.ceil(Math.random() * pokemon.length))
   }
 
   componentDidUpdate() {

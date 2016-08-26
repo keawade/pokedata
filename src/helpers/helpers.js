@@ -2,7 +2,7 @@ import React from 'react'
 import { types } from './types'
 
 export function renderType(type) {
-  const style = `type ${type}`
+  const style = `type ${type}`.toLowerCase()
   const tagContent = type.toUpperCase()
   return (
     <span className={style} key={tagContent} >{tagContent}</span>

@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
-import { renderType } from '../helpers/helpers'
 import leftPad from 'left-pad'
 
 class History extends Component {
   constructor(props) {
     super(props)
 
+    this.renderType = this.renderType.bind(this)
     this.renderListItem = this.renderListItem.bind(this)
+  }
+
+  renderType(type) {
+    return (
+      <i key={type} className={`circle icon ${type}`.toLowerCase()}></i>
+    )
   }
 
   renderListItem(pokemon, index) {
@@ -24,7 +30,7 @@ class History extends Component {
               <div className='content'>
                 <div className='header'>{id} - {pokemon.name}</div>
                 <div className='description'>
-                  {pokemon.types.map(renderType) }
+                  {pokemon.types.map(this.renderType) }
                 </div>
               </div>
             </div>
@@ -39,7 +45,7 @@ class History extends Component {
     if (this.props.pokemon.length > 1) {
       return (
         <div>
-          <div className='ui divider' />
+          <div className='ui divider thing' />
           <div className='ui four column stackable grid container'>
             {this.props.pokemon.map(this.renderListItem) }
           </div>
