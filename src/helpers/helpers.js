@@ -14,8 +14,8 @@ const types = Object.keys(typesChart)
 
 export function calculateStrengths(givenTypes) {
   return types.reduce((strengths, type) => {
-    strengths[type] = givenTypes.reduce((total, giventType) => total * typesChart[type][givenType], 1)
+    strengths[type] = givenTypes.reduce((total, givenType) => total * typesChart[type][givenType], 1)
     return strengths
-  })
+  }, {})
 
 }
