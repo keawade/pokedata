@@ -17,14 +17,14 @@ class App extends Component {
   }
 
   selectPokemon(event, id) {
-    console.log('[pokeman] selected pokemon', id)
     let selected
-    for (var i = 0; i < pokemon.length; i++) {
+    for (let i = 0; i < pokemon.length; i++) {
       if (pokemon[i].id === id) {
         selected = pokemon[i]
         break;
       }
     }
+
     this.setState({
       list: [selected, ...this.state.list]
     })
@@ -40,10 +40,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="ui container">
         <Search pokemon={pokemon} selectFunction={this.selectPokemon} />
-        <Viewer current={this.state.list[0]} />
-        <History list={this.state.list} />
+        <Viewer pokemon={this.state.list[0]} />
+        <History pokemon={this.state.list} selectFunction={this.selectPokemon} />
       </div>
     );
   }

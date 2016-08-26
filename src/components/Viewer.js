@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { calculateStrengths } from '../helpers/helpers'
+import { calculateStrengths, renderType } from '../helpers/helpers'
 import leftPad from 'left-pad'
 
 class Viewer extends Component {
@@ -11,12 +11,10 @@ class Viewer extends Component {
       resistances: [],
       immunities: []
     }
-
-    this.renderType = this.renderType.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
-    const strengths = calculateStrengths(nextProps.current.types.map(type => { return type.toLowerCase() }))
+    const strengths = calculateStrengths(nextProps.pokemon.types.map(type => { return type.toLowerCase() }))
     let weaknesses = []
     let resistances = []
     let immunities = []
@@ -36,39 +34,30 @@ class Viewer extends Component {
     this.setState({ weaknesses, resistances, immunities })
   }
 
-  renderType(type) {
-    const style = `type ${type}`
-    const tagContent = type.toUpperCase()
-    return (
-      <span className={style} key={tagContent} >{tagContent}</span>
-    )
-  }
-
   render() {
     console.debug('[Viewer] state', this.state)
-    if (this.props.current !== undefined) {
-      const spritePath = `http://assets.pokemon.com/assets/cms2/img/pokedex/full/${leftPad(this.props.current.id, 3, 0)}.png`
-      console.log('[Viewer]', this.props.current)
+    if (this.props.pokemon !== undefined) {
+      let id = leftPad(this.props.pokemon.id, 3, 0)
       return (
         <div className='ui segments'>
           <div className='ui center aligned segment'>
-            <h1 className='ui huge header'>#{this.props.current.id} - {this.props.current.name}</h1>
+            <h1 className='ui huge header'>#{id} - {this.props.pokemon.name}</h1>
           </div>
           <div className='ui segment'>
             <div className='ui two column divided stackable grid'>
               <div className='row'>
                 <div className='column'>
-                  <img src={spritePath} alt={this.props.current.name} />
+                  <img src={`http://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`} alt={this.props.pokemon.name} />
                 </div>
                 <div className='column'>
                   <h3 className='ui dividing header'>Type</h3>
-                  {this.props.current.types.map(this.renderType) }
+                  {this.props.pokemon.types.map(renderType) }
                   <h3 className='ui dividing header'>Weaknesses</h3>
-                  {this.state.weaknesses.map(this.renderType) }
+                  {this.state.weaknesses.map(renderType) }
                   <h3 className='ui dividing header'>Resistances</h3>
-                  {this.state.resistances.map(this.renderType) }
+                  {this.state.resistances.map(renderType) }
                   <h3 className='ui dividing header'>Immunities</h3>
-                  {this.state.immunities.map(this.renderType) }
+                  {this.state.immunities.map(renderType) }
                 </div>
               </div>
             </div>

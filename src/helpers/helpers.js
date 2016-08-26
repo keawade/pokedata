@@ -1,4 +1,13 @@
+import React from 'react'
 import { types } from './types'
+
+export function renderType(type) {
+  const style = `type ${type}`
+  const tagContent = type.toUpperCase()
+  return (
+    <span className={style} key={tagContent} >{tagContent}</span>
+  )
+}
 
 export function calculateStrengths(givenTypes) {
   let strengths = {}
@@ -21,7 +30,7 @@ export function calculateStrengths(givenTypes) {
       dragon: types.dragon[givenTypes[0]] * types.dragon[givenTypes[1]],
       dark: types.dark[givenTypes[0]] * types.dark[givenTypes[1]],
       steel: types.steel[givenTypes[0]] * types.steel[givenTypes[1]],
-      fairy:  types.fairy[givenTypes[0]] * types.fairy[givenTypes[1]]
+      fairy: types.fairy[givenTypes[0]] * types.fairy[givenTypes[1]]
     }
   } else {
     strengths = {
@@ -42,7 +51,7 @@ export function calculateStrengths(givenTypes) {
       dragon: types.dragon[givenTypes[0]],
       dark: types.dark[givenTypes[0]],
       steel: types.steel[givenTypes[0]],
-      fairy:  types.fairy[givenTypes[0]]
+      fairy: types.fairy[givenTypes[0]]
     }
   }
   return strengths
