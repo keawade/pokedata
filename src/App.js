@@ -25,9 +25,18 @@ class App extends Component {
       }
     }
 
-    this.setState({
-      list: [selected, ...this.state.list]
-    })
+    const pos = this.state.list.indexOf(selected)
+    if (pos > -1) {
+      let tempList = this.state.list.slice(0)
+      tempList.splice(pos, 1)
+      this.setState({
+        list: [selected, ...tempList]
+      })
+    } else {
+      this.setState({
+        list: [selected, ...this.state.list]
+      })
+    }
   }
 
   componentDidMount() {
