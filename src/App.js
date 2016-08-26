@@ -26,16 +26,6 @@ class App extends Component {
         return false
       }
     })
-    
-    const selected = pokemon.find((poke, idx) => {
-      if(poke.id === idx){
-        //Found the pokemon, store its index, then return true to get it
-        pos = idx
-        return true
-      }
-      //return false to keep looking in the list
-      return false
-    })
 
     this.setState({ //setState is async, we may set scrollTo before we set state and rerender
       list: (pos > -1)
