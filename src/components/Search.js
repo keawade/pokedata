@@ -5,17 +5,15 @@ class Search extends Component {
   constructor(props) {
     super(props)
 
-    let temp = this.props.pokemon.map(poke => {
-      return {
+    this.state = {
+      options: props.pokemon.map(poke => ({
         value: poke.id,
         text: poke.name
-      }
-    })
-
-    this.state = {
-      options: temp
+      }))
     }
   }
+
+  shouldComponentUpdate(){ return false }
 
   render() {
     return (
