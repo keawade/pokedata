@@ -27,11 +27,17 @@ class App extends Component {
       }
     })
 
-    this.setState({ //setState is async, we may set scrollTo before we set state and rerender
-      list: (pos > -1)
-        ? [selected, ...list.slice(0, pos), ...list.slice(pos, list.length-1)]
-        : [selected, ...list]
-    })
+    if (pos > -1) {
+      let tempList = this.state.list.slice(0)
+      tempList.splice(pos, 1)
+      this.setState({
+        list: [selected, ...tempList]
+      })
+    } else {
+      this.setState({
+        list: [selected, ...this.state.list]
+      })
+    }
     window.scrollTo(0, 0)
   }
 
