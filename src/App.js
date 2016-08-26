@@ -17,15 +17,16 @@ class App extends Component {
   }
 
   selectPokemon(event, id) {
-    let selected
-    for (let i = 0; i < pokemon.length; i++) {
-      if (pokemon[i].id === id) {
-        selected = pokemon[i]
-        break;
+    let pos = -1
+    const selected = pokemon.find((poke, index) => {
+      if (poke.id === id) {
+        pos = index
+        return true
+      } else {
+        return false
       }
-    }
+    })
 
-    const pos = this.state.list.indexOf(selected)
     if (pos > -1) {
       let tempList = this.state.list.slice(0)
       tempList.splice(pos, 1)
