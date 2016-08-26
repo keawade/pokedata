@@ -39,32 +39,35 @@ class Viewer extends Component {
     if (this.props.pokemon !== undefined) {
       let id = leftPad(this.props.pokemon.id, 3, 0)
       return (
-        <div className='ui segments'>
-          <div className='ui center aligned segment'>
-            <h1 className='ui huge header'>#{id} - {this.props.pokemon.name}</h1>
-          </div>
-          <div className='ui segment'>
-            <div className='ui two column divided stackable grid'>
-              <div className='row'>
-                <div className='column'>
-                  <img src={`http://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`} alt={this.props.pokemon.name} />
-                </div>
-                <div className='column'>
-                  <h3 className='ui dividing header'>Type</h3>
-                  {this.props.pokemon.types.map(renderType) }
-                  <h3 className='ui dividing header'>Weaknesses</h3>
-                  {this.state.weaknesses.map(renderType) }
-                  <h3 className='ui dividing header'>Resistances</h3>
-                  {this.state.resistances.map(renderType) }
-                  <h3 className='ui dividing header'>Immunities</h3>
-                  {this.state.immunities.map(renderType) }
+        <div className='App-viewer'>
+          <div className='ui segments'>
+            <div className='ui center aligned segment'>
+              <h1 className='ui huge header'>#{id} - {this.props.pokemon.name}</h1>
+            </div>
+            <div className='ui segment'>
+              <div className='ui two column divided stackable grid'>
+                <div className='row'>
+                  <div className='column'>
+                    <img src={`http://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`} alt={this.props.pokemon.name} />
+                  </div>
+                  <div className='column'>
+                    <h3 className='ui dividing header'>Type</h3>
+                    {this.props.pokemon.types.map(renderType) }
+                    <h3 className='ui dividing header'>Weaknesses</h3>
+                    {this.state.weaknesses.map(renderType) }
+                    <h3 className='ui dividing header'>Resistances</h3>
+                    {this.state.resistances.map(renderType) }
+                    <h3 className='ui dividing header'>Immunities</h3>
+                    {this.state.immunities.map(renderType) }
+                  </div>
                 </div>
               </div>
             </div>
+            <div className='ui center aligned segment'>
+              Fork me on <a href='https://github.com/keawade/pokedata' target='_blank'>GitHub</a>
+            </div>
           </div>
-          <div className='ui center aligned segment'>
-            Fork me on <a href='https://github.com/keawade/pokedata' target='_blank'>GitHub</a>
-          </div>
+          {this.props.history > 1 ? <div className='ui divider' /> : null}
         </div>
       );
     } else {

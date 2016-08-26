@@ -52,7 +52,7 @@ class App extends Component {
     return (
       <div className="ui container">
         <Search pokemon={pokemon} selectFunction={this.selectPokemon} />
-        <Viewer pokemon={this.state.list[0]} />
+        <Viewer pokemon={this.state.list[0]} history={this.state.list.length}/>
         <History pokemon={this.state.list} selectFunction={this.selectPokemon} />
       </div>
     );

@@ -44,8 +44,7 @@ class History extends Component {
     console.log('[History] length', this.props.pokemon.length)
     if (this.props.pokemon.length > 1) {
       return (
-        <div>
-          <div className='ui divider thing' />
+        <div className='App-history'>
           <div className='ui four column stackable grid container'>
             {this.props.pokemon.map(this.renderListItem) }
           </div>
