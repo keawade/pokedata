@@ -30,6 +30,10 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    this.selectPokemon(null, Math.floor(Math.random() * pokemon.length))
+  }
+
   componentDidUpdate() {
     console.debug('[pokeman] pokemon list updated', this.state.list)
   }
