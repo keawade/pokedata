@@ -17,26 +17,25 @@ class App extends Component {
   }
 
   selectPokemon(event, id) {
-    let selected
-    for (let i = 0; i < pokemon.length; i++) {
-      if (pokemon[i].id === id) {
-        selected = pokemon[i]
-        break;
+    let pos = -1
+    const { list } = this.state
+    
+    //Use find for shortcutting the loop
+    const selected = pokemon.find((poke, idx) => {
+      if(poke.id === id){
+        //Found the pokemon, store its index, then return true to get it
+        pos = id
+        return true
       }
-    }
+      //return false to keep looking in the list
+      return false
+    })
 
-    const pos = this.state.list.indexOf(selected)
-    if (pos > -1) {
-      let tempList = this.state.list.slice(0)
-      tempList.splice(pos, 1)
-      this.setState({
-        list: [selected, ...tempList]
-      })
-    } else {
-      this.setState({
-        list: [selected, ...this.state.list]
-      })
-    }
+    this.setState({ //setState is async, we may set scrollTo before we set state and rerender
+      list: (pos > -1)
+        ? [selected, ...list.slice(0, pos), ...list.slice(pos, list.length-1)]
+        : [selected, ...list]
+    })
     window.scrollTo(0, 0)
   }
 
