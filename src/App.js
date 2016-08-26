@@ -22,9 +22,9 @@ class App extends Component {
     
     //Use find for shortcutting the loop
     const selected = pokemon.find((poke, idx) => {
-      if(poke.id === id){
+      if(poke.id === idx){
         //Found the pokemon, store its index, then return true to get it
-        pos = id
+        pos = idx
         return true
       }
       //return false to keep looking in the list
