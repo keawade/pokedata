@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import '../App.css';
+import { calculateStrengths } from '../helpers/helpers'
 
 class Viewer extends Component {
   render() {
     return (
       <div className="App-viewer">
-        viewer
+        current: {this.props.current ? this.props.current.name : null}
       </div>
     );
   }
