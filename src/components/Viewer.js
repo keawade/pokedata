@@ -14,7 +14,7 @@ class Viewer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const strengths = calculateStrengths(nextProps.pokemon.types.map(type => type.toLowerCase() ))
+    const strengths = calculateStrengths(nextProps.pokemon.types.map(type => { return type.toLowerCase() }))
     let weaknesses = []
     let resistances = []
     let immunities = []
