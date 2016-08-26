@@ -18,9 +18,15 @@ class App extends Component {
 
   selectPokemon(event, id) {
     let pos = -1
-    const { list } = this.state
+    const selected = pokemon.find((poke, index) => {
+      if (poke.id === id) {
+        pos = index
+        return true
+      } else {
+        return false
+      }
+    })
     
-    //Use find for shortcutting the loop
     const selected = pokemon.find((poke, idx) => {
       if(poke.id === idx){
         //Found the pokemon, store its index, then return true to get it
