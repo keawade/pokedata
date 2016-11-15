@@ -13,7 +13,9 @@ class Search extends Component {
     }
   }
 
-  shouldComponentUpdate(){ return false }
+  shouldComponentUpdate() {
+    return false
+  }
 
   render() {
     return (

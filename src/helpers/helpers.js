@@ -9,7 +9,6 @@ export function renderType(type) {
   )
 }
 
-
 const types = Object.keys(typesChart)
 
 export function calculateStrengths(givenTypes) {
@@ -17,5 +16,4 @@ export function calculateStrengths(givenTypes) {
     strengths[type] = givenTypes.reduce((total, givenType) => total * typesChart[type][givenType], 1)
     return strengths
   }, {})
-
 }
