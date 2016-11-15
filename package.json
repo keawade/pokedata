@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "http://keawade.io/pokedata",
   "devDependencies": {
+    "@types/react": "^0.14.48",
+    "@types/react-dom": "^0.14.18",
     "autoprefixer": "6.4.0",
     "babel-core": "6.13.2",
     "babel-eslint": "6.1.2",
@@ -31,6 +33,7 @@
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.9.0",
     "filesize": "3.3.0",
+    "flow-bin": "^0.35.0",
     "fs-extra": "0.30.0",
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.22.0",
@@ -58,7 +61,8 @@
   },
   "scripts": {
     "start": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "flow_check": "flow check || exit 0"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"

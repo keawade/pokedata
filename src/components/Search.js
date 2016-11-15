@@ -1,8 +1,20 @@
-import React, { Component } from 'react'
+// @flow
+import React from 'react'
 import { Dropdown } from 'stardust'
 
-class Search extends Component {
-  constructor(props) {
+type Props = {
+  pokemon: Array<Object>,
+  selectFunction: (event: any) => void,
+}
+
+class Search extends React.Component {
+  props: Props
+
+  state: {
+    options: Array<{ value: number, text: string }>
+  }
+
+  constructor(props: Props) {
     super(props)
 
     this.state = {
@@ -28,7 +40,6 @@ class Search extends Component {
           options={this.state.options}
           placeholder='Search for a Pokémon!'
           onChange={this.props.selectFunction}
-          loading={this.props.loading}
           />
       </div>
     )
