@@ -45,14 +45,14 @@ module.exports = {
   },
   resolve: {
     // These are the reasonable defaults supported by the Node ecosystem.
-    extensions: ['.js', '.json', '']
+    extensions: ['.js', '.jsx', '.json', '']
   },
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
     preLoaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'eslint',
         include: paths.appSrc
       }
@@ -60,7 +60,7 @@ module.exports = {
     loaders: [
       // Process JS with Babel.
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: paths.appSrc,
         loader: 'babel',
         query: require('./babel.prod')
