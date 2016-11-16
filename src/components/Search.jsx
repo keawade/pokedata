@@ -45,7 +45,7 @@ class Search extends Component {
           search={true}
           options={this.state.options}
           placeholder='Search for a Pokémon!'
-          onChange={(event: any) => { this.props.selectFunction(event.target.value);}}
+          onChange={(event: any, value: number) => { this.props.selectFunction(value);}}
           />
       </div>
     )

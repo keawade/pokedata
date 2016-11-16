@@ -55,7 +55,7 @@ class Viewer extends Component {
   }
 
   render() {
-    console.debug('[Viewer] state', this.state)
+    // console.debug('[Viewer] state', this.state)
     if (this.props.pokemon !== undefined) {
       let id = leftPad(this.props.pokemon.id, 3, 0)
       return (
