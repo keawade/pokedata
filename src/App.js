@@ -1,22 +1,32 @@
+// @flow
 import React, { Component } from 'react'
 import Search from './components/Search'
 import Viewer from './components/Viewer'
 import History from './components/History'
 import { pokemon } from './helpers/pokemon'
 
+type Pokemon = {
+    id: number,
+    name: string,
+    types: Array<string>,
+}
+
 class App extends Component {
-  constructor(props) {
+  props: {}
+
+  state: {
+    list: Array<Pokemon>,
+  }
+
+  constructor(props: {}) {
     super(props)
 
     this.state = {
       list: [],
-      loading: false
     }
-
-    this.selectPokemon = this.selectPokemon.bind(this)
   }
 
-  selectPokemon(event, id) {
+  selectPokemon = (id: number): void => {
     let pos = -1
     const selected = pokemon.find((poke, index) => {
       if (poke.id === id) {
@@ -42,7 +52,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.selectPokemon(null, Math.ceil(Math.random() * 151))
+    this.selectPokemon(Math.ceil(Math.random() * 151))
   }
 
   componentDidUpdate() {

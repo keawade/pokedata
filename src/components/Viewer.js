@@ -1,9 +1,29 @@
+// @flow
 import React, { Component } from 'react';
 import { calculateStrengths, renderType } from '../helpers/helpers'
 import leftPad from 'left-pad'
 
+type Pokemon = {
+    id: number,
+    name: string,
+    types: Array<string>,
+}
+
+type Props = {
+  pokemon: Pokemon,
+  history: number,
+}
+
 class Viewer extends Component {
-  constructor(props) {
+  props: Props
+
+  state: {
+    weaknesses: Array<string>,
+    resistances: Array<string>,
+    immunities: Array<string>,
+  }
+
+  constructor(props: Props) {
     super(props)
 
     this.state = {
@@ -13,7 +33,7 @@ class Viewer extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props): void {
     const strengths = calculateStrengths(nextProps.pokemon.types.map(type => { return type.toLowerCase() }))
     let weaknesses = []
     let resistances = []

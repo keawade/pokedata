@@ -2,9 +2,15 @@
 import React from 'react'
 import leftPad from 'left-pad'
 
+type Pokemon = {
+    id: number,
+    name: string,
+    types: Array<string>,
+}
+
 type Props = {
-  pokemon: Array<Object>,
-  selectFunction: (event: any) => void,
+  pokemon: Array<Pokemon>,
+  selectFunction: (id: number) => void,
 }
 
 const History = (props: Props) => {
@@ -20,7 +26,7 @@ const History = (props: Props) => {
               const id = leftPad(poke.id, 3, 0)
               return (
                 <div key={poke.id} className='column'>
-                  <a onClick={() => { props.selectFunction(null, poke.id) } }>
+                  <a onClick={(event: any) => { props.selectFunction(poke.id) } }>
                     <div className='ui card'>
                       <div className='image'>
                         <img src={`http://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`} alt={poke.name} />

@@ -1,13 +1,19 @@
 // @flow
-import React from 'react'
+import React, { Component } from 'react'
 import { Dropdown } from 'stardust'
 
-type Props = {
-  pokemon: Array<Object>,
-  selectFunction: (event: any) => void,
+type Pokemon = {
+    id: number,
+    name: string,
+    types: Array<string>,
 }
 
-class Search extends React.Component {
+type Props = {
+  pokemon: Array<Pokemon>,
+  selectFunction: (id: number) => void,
+}
+
+class Search extends Component {
   props: Props
 
   state: {
@@ -39,7 +45,7 @@ class Search extends React.Component {
           search={true}
           options={this.state.options}
           placeholder='Search for a Pokémon!'
-          onChange={this.props.selectFunction}
+          onChange={(event: any) => { this.props.selectFunction(event.target.value);}}
           />
       </div>
     )
